@@ -1,0 +1,9 @@
+# Ignore large model and data files
+*.pkl
+*.sav
+*.mp4
+*.csv
+training_result.png
+
+# Python cache
+__pycache__/
