@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Wind Energy Forecasting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">⚡</span>
+    <span class="brand-text">Smart Wind Forecast</span>
+  </div>
+  <a class="btn ghost" href="/predict">Open Dashboard</a>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1>Weather-Based <span class="accent">Wind Energy</span> Prediction</h1>
+    <p class="lead">
+      A machine learning system that estimates wind turbine power output using
+      historical data and live weather conditions.
+    </p>
+
+    <div class="features">
+      <div class="chip">Random Forest ML</div>
+      <div class="chip">Live Weather API</div>
+      <div class="chip">Scalable & Fast</div>
+    </div>
+
+    <div class="cta">
+      <a href="/predict" class="btn primary">Go to Prediction Dashboard</a>
+      <a href="#how" class="btn secondary">How it Works</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="card glass">
+      <img src="{{ url_for('static', filename='wind.jpg') }}" alt="Wind Turbine">
+      <p class="caption">Clean energy powered by data-driven intelligence</p>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <h2>How This System Works</h2>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h3>Train Model</h3>
+      <p>We train a Random Forest model using historical wind turbine data.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h3>Fetch Live Weather</h3>
+      <p>The app fetches real-time weather data using a public API.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h3>Predict Output</h3>
+      <p>The model predicts the expected power output instantly.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 | Smart Wind Energy Prediction System | Developed by Your Team
+</footer>
+
+</body>
+</html>

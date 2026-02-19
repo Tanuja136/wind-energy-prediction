@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wind Energy Prediction Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">⚡</span>
+    <span class="brand-text">Smart Wind Forecast</span>
+  </div>
+  <a class="btn ghost" href="/">Home</a>
+</header>
+
+<main class="dashboard">
+
+  <!-- LEFT: WEATHER PANEL -->
+  <section class="panel glass">
+    <h2>🌦 Live Weather</h2>
+    <p class="muted">Select a city to fetch current conditions.</p>
+
+    <form method="POST" class="stack">
+      <select name="city" required>
+        <option value="" disabled selected>-- Select City --</option>
+        {% for city in cities %}
+          <option value="{{ city }}">{{ city }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn secondary">Fetch Weather</button>
+    </form>
+
+    {% if weather_data %}
+    <div class="weather-grid">
+      <div class="w-item">
+        <span class="label">City</span>
+        <span class="value">{{ weather_data.city }}</span>
+      </div>
+      <div class="w-item">
+        <span class="label">Temperature</span>
+        <span class="value">{{ weather_data.temperature }} °C</span>
+      </div>
+      <div class="w-item">
+        <span class="label">Humidity</span>
+        <span class="value">{{ weather_data.humidity }} %</span>
+      </div>
+      <div class="w-item">
+        <span class="label">Pressure</span>
+        <span class="value">{{ weather_data.pressure }} hPa</span>
+      </div>
+      <div class="w-item">
+        <span class="label">Wind Speed</span>
+        <span class="value">{{ weather_data.wind_speed }} m/s</span>
+      </div>
+    </div>
+    {% endif %}
+  </section>
+
+  <!-- RIGHT: PREDICTION PANEL -->
+  <section class="panel glass highlight">
+    <h2>⚡ Predict Power Output</h2>
+    <p class="muted">Enter the required inputs or use live wind speed.</p>
+
+    <form method="POST" class="stack">
+      <div>
+        <label>Theoretical Power (kWh)</label>
+        <input type="text" name="theoretical_power" placeholder="e.g., 900" required>
+      </div>
+
+      <div>
+        <label>Wind Speed (m/s)</label>
+        <input type="text" name="wind_speed" placeholder="e.g., 8.5" required>
+      </div>
+
+      <button type="submit" class="btn primary">Predict Energy</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+      <span class="result-title">Predicted Power Output</span>
+      <div class="result-value">{{ prediction }} <small>kW</small></div>
+    </div>
+    {% endif %}
+  </section>
+
+</main>
+
+<footer class="footer">
+  © 2026 | Smart Wind Energy Prediction System
+</footer>
+
+</body>
+</html>
